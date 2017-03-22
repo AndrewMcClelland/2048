@@ -28,12 +28,14 @@ namespace WindowsFormsApp1
 		{
 			InitializeComponent();
             welcomeScreen.GameStarted += startGame;
+            this.Focus();
         }
 
         private void startGame(object sender, EventArgs e)
         {
             Controls.Clear();
             Controls.Add(new GameScreen(this));
+            this.Focus();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -52,35 +54,5 @@ namespace WindowsFormsApp1
         //    return base.ProcessCmdKey(ref msg, keyData);
         //}
 
-        protected override bool IsInputKey(Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.Right:
-                case Keys.Left:
-                case Keys.Up:
-                case Keys.Down:
-                    return true;
-                case Keys.Shift | Keys.Right:
-                case Keys.Shift | Keys.Left:
-                case Keys.Shift | Keys.Up:
-                case Keys.Shift | Keys.Down:
-                    return true;
-            }
-            return base.IsInputKey(keyData);
-        }
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            base.OnKeyDown(e);
-            switch (e.KeyCode)
-            {
-                case Keys.Left:
-                case Keys.Right:
-                case Keys.Up:
-                case Keys.Down:
-                    OnUserKeyInput(e);
-                    break;
-            }
-        }
     }
 }
