@@ -65,6 +65,7 @@ namespace WindowsFormsApp1
         {
             GameTile tile = new GameTile();
             Random rnd = new Random();
+            int[] possibleValues = { 2, 4 };
             do
             {
                 int x = rnd.Next(0, 4);
@@ -72,7 +73,7 @@ namespace WindowsFormsApp1
                 tile = (GameTile)gameGrid.tableLayoutPanel.GetControlFromPosition(x, y);
             } while (tile.Value != 0);
 
-            tile.Value = 2;
+            tile.Value = possibleValues[rnd.Next(possibleValues.Length)];
         }
 
         private bool isGameOver()
