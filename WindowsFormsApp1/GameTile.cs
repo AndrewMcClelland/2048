@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-	public partial class GameTile : UserControl
-	{
+    public partial class GameTile : UserControl
+    {
 
         public GameTile()
-		{
-			InitializeComponent();
-		}
+        {
+            InitializeComponent();
+        }
 
         public int Value
         {
@@ -27,67 +27,77 @@ namespace WindowsFormsApp1
 
                 return Convert.ToInt16(this.label.Text);
             }
-            set { label.Text = value.ToString(); }
-        }
-
-        public void UpdateValue(int value)
-        {
-            this.label.Text = value.ToString();
-            switch (value)
+            set
             {
-                case 0:
+                label.Text = value.ToString();
 
-                    break;
+                switch (value)
+                {
+                    case 0:
+                        this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+                        this.label.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+                        break;
 
-                case 2:
+                    case 2:
+                        this.BackColor = System.Drawing.Color.IndianRed;
+                        this.label.BackColor = System.Drawing.Color.IndianRed;
+                        break;
 
-                    break;
+                    case 4:
+                        this.BackColor = System.Drawing.Color.RosyBrown;
+                        this.label.BackColor = System.Drawing.Color.RosyBrown;
+                        break;
 
-                case 4:
+                    case 8:
+                        this.BackColor = System.Drawing.Color.LightSalmon;
+                        this.label.BackColor = System.Drawing.Color.LightSalmon;
+                        break;
 
-                    break;
+                    case 16:
+                        this.BackColor = System.Drawing.Color.SaddleBrown;
+                        this.label.BackColor = System.Drawing.Color.SaddleBrown;
+                        break;
 
-                case 8:
+                    case 32:
+                        this.BackColor = System.Drawing.Color.PeachPuff;
+                        this.label.BackColor = System.Drawing.Color.PeachPuff;
+                        break;
 
-                    break;
+                    case 64:
+                        this.BackColor = System.Drawing.Color.Tan;
+                        this.label.BackColor = System.Drawing.Color.Tan;
+                        break;
 
-                case 16:
+                    case 128:
+                        this.BackColor = System.Drawing.Color.PaleGoldenrod;
+                        this.label.BackColor = System.Drawing.Color.PaleGoldenrod;
+                        break;
 
-                    break;
+                    case 256:
+                        this.BackColor = System.Drawing.Color.Chartreuse;
+                        this.label.BackColor = System.Drawing.Color.Chartreuse;
+                        break;
 
-                case 32:
+                    case 512:
+                        this.BackColor = System.Drawing.Color.Brown;
+                        this.label.BackColor = System.Drawing.Color.Brown;
+                        break;
 
-                    break;
+                    case 1024:
+                        this.BackColor = System.Drawing.Color.Silver;
+                        this.label.BackColor = System.Drawing.Color.Silver;
+                        break;
 
-                case 64:
+                    case 2048:
+                        this.BackColor = System.Drawing.Color.Gold;
+                        this.label.BackColor = System.Drawing.Color.Gold;
+                        break;
 
-                    break;
-
-                case 128:
-
-                    break;
-
-                case 256:
-
-                    break;
-
-                case 512:
-
-                    break;
-
-                case 1024:
-
-                    break;
-
-                case 2048:
-
-                    break;
-
-                default:
-                    break;
-
+                    default:
+                        break;
+                }
             }
         }
 
-	}
+    }
 }
