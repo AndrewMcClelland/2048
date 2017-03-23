@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
             Controls.Clear();
             Controls.Add(new GameScreen(this));
             this.Focus();
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -43,16 +44,6 @@ namespace WindowsFormsApp1
             OnUserKeyInput(e);
         }
 
-        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        //{
-        //    if (keyData == Keys.Up)
-        //    {
-        //        // Handle key at form level.
-        //        // Do not send event to focused control by returning true.
-        //        return true;
-        //    }
-        //    return base.ProcessCmdKey(ref msg, keyData);
-        //}
 
     }
 }
