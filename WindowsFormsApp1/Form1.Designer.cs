@@ -34,19 +34,21 @@
             // welcomeScreen
             // 
             this.welcomeScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.welcomeScreen.Location = new System.Drawing.Point(39, 12);
+            this.welcomeScreen.Location = new System.Drawing.Point(-11, 12);
             this.welcomeScreen.Name = "welcomeScreen";
-            this.welcomeScreen.Size = new System.Drawing.Size(500, 500);
+            this.welcomeScreen.Size = new System.Drawing.Size(500, 400);
             this.welcomeScreen.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.welcomeScreen);
             this.KeyPreview = true;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);

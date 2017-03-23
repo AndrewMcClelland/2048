@@ -39,6 +39,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Moccasin;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -56,6 +57,7 @@
             // gameGrid
             // 
             this.gameGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gameGrid.AutoSize = true;
             this.gameGrid.Location = new System.Drawing.Point(50, 78);
             this.gameGrid.Name = "gameGrid";
             this.gameGrid.Size = new System.Drawing.Size(400, 400);
@@ -102,13 +104,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(500, 500);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
