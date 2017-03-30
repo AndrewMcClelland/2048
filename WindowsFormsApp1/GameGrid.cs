@@ -49,19 +49,84 @@ namespace WindowsFormsApp1
             shiftTiles(e.KeyCode);
             spawnTile();
             calculateScore();
-            //check for lose
+            //check for loss
         }
 
         private void shiftTiles(Keys keyCode)
         {
+            int x,y;
+            int[] lane = new int[4];
             if (keyCode == Keys.W)
-                ;
+            {
+                for (x = 0; x < 4; x++) //cols
+                {
+                    for (y = 0; y < 4; y++) 
+                    {
+                        lane[y] = getTileValue(x, y);
+                    }
+                    mergeLane(lane);
+                    for (y = 0; y < 4; y++)
+                    {
+                        setTileValue(x, y, lane[y]);
+                    }
+                }
+                
+            }
             else if (keyCode == Keys.A)
-                ;
-            else if (keyCode == Keys.S)
-                ;
-            else if (keyCode == Keys.D)
-                ;
+            {
+                for(y = 0; y < 4; y++) //rows
+                {
+                    for (x = 0; x < 4; x++) 
+                    {
+                        lane[x] = getTileValue(x, y);
+                    }
+                    mergeLane(lane);
+                    for (x = 0; x < 4; x++)
+                    {
+                        setTileValue(x, y, lane[x]);
+                    }
+                }
+                
+            }
+            else if (keyCode == Keys.S) 
+            {
+                for (x = 0; x < 4; x++) //cols
+                {
+                    for (y = 0; y < 4; y++)
+                    {
+                        lane[y] = getTileValue(x, y);
+                        lane.Reverse();
+                    }
+                    mergeLane(lane);
+                    for (y = 0; y < 4; y++)
+                    {
+                        setTileValue(x, y, lane[y]);
+                    }
+                }
+                
+            }
+            else if (keyCode == Keys.D) 
+            {
+                for (y = 0; y < 4; y++) //rows
+                {
+                    for (x = 0; x < 4; x++)
+                    {
+                        lane[x] = getTileValue(x, y);
+                        lane.Reverse();
+                    }
+                    mergeLane(lane);
+                    for (x = 0; x < 4; x++)
+                    {
+                        setTileValue(x, y, lane[x]);
+                    }
+                }
+                
+            }
+        }
+
+        private void mergeLane(int[] lane)
+        {
+
         }
 
         private void spawnTile()
@@ -79,6 +144,7 @@ namespace WindowsFormsApp1
             setTileValue(x, y, tileValue);
         }
 
+
         private int currentScore = 0;
         public int CurrentScore
         {
@@ -92,8 +158,7 @@ namespace WindowsFormsApp1
             }
         }
         private void calculateScore()
-        {
-            int score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
+        { score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
                         getTileValue(0, 1) + getTileValue(1, 1) + getTileValue(2, 1) + getTileValue(3, 1) +
                         getTileValue(0, 2) + getTileValue(1, 2) + getTileValue(2, 2) + getTileValue(3, 2) +
                         getTileValue(0, 3) + getTileValue(1, 3) + getTileValue(2, 3) + getTileValue(3, 3);

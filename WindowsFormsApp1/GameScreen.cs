@@ -34,7 +34,9 @@ namespace WindowsFormsApp1
         {
             if (e.PropertyName.Equals("Score"))
                 scoreLabel.Text = gameGrid.CurrentScore.ToString();
-            //else if gameover
+            else if (e.PropertyName.Equals("gameOver"))
+                //Game over
+                ;
         }
 
         public void UserInput(object sender, KeyEventArgs e)
