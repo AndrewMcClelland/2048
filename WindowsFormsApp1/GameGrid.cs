@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
                     {
                         lane[y] = getTileValue(x, y);
                     }
-                    mergeLane(lane);
+                    lane = mergeLane(lane);
                     for (y = 0; y < 4; y++)
                     {
                         setTileValue(x, y, lane[y]);
@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
                     {
                         lane[x] = getTileValue(x, y);
                     }
-                    mergeLane(lane);
+                    lane = mergeLane(lane);
                     for (x = 0; x < 4; x++)
                     {
                         setTileValue(x, y, lane[x]);
@@ -95,9 +95,10 @@ namespace WindowsFormsApp1
                     for (y = 0; y < 4; y++)
                     {
                         lane[y] = getTileValue(x, y);
-                        lane.Reverse();
                     }
-                    mergeLane(lane);
+                    Array.Reverse(lane);
+                    lane = mergeLane(lane);
+                    Array.Reverse(lane);
                     for (y = 0; y < 4; y++)
                     {
                         setTileValue(x, y, lane[y]);
@@ -112,9 +113,10 @@ namespace WindowsFormsApp1
                     for (x = 0; x < 4; x++)
                     {
                         lane[x] = getTileValue(x, y);
-                        lane.Reverse();
                     }
-                    mergeLane(lane);
+                    Array.Reverse(lane);
+                    lane = mergeLane(lane);
+                    Array.Reverse(lane);
                     for (x = 0; x < 4; x++)
                     {
                         setTileValue(x, y, lane[x]);
@@ -139,11 +141,21 @@ namespace WindowsFormsApp1
                 {
                     if (next_val == 0)
                     {
-                        if (i == 2)
+                        if (next_index == 3)
                             break;
                         next_index++;
+                        next_val = lane[next_index];
                     }
-                    else if ((current_val == next_val) || current_val == 0)
+                    else if(current_val == 0)
+                    {
+                        lane[current_index] = current_val + next_val;
+                        lane[next_index] = 0;
+                        if (next_index == 3)
+                            break;
+                        next_index++;
+                        next_val = lane[next_index];
+                    }
+                    else if (current_val == next_val)
                     {
                         lane[current_index] = current_val + next_val;
                         lane[next_index] = 0;
@@ -236,12 +248,7 @@ namespace WindowsFormsApp1
             }
         }
         private void calculateScore()
-<<<<<<< HEAD
-        {
-            int score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
-=======
-        { int score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
->>>>>>> 4b47dad61da399ed452eda3bd71bab2014387dea
+        { int score =   getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
                         getTileValue(0, 1) + getTileValue(1, 1) + getTileValue(2, 1) + getTileValue(3, 1) +
                         getTileValue(0, 2) + getTileValue(1, 2) + getTileValue(2, 2) + getTileValue(3, 2) +
                         getTileValue(0, 3) + getTileValue(1, 3) + getTileValue(2, 3) + getTileValue(3, 3);
