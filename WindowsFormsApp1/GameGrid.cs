@@ -124,9 +124,37 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void mergeLane(int[] lane)
+        private int[] mergeLane(int[] lane)
         {
+            int current_index, next_index, current_val, next_val;
 
+            for (int i = 0; i < 3; i++)
+            {
+                current_index = i;
+                next_index = i + 1;
+                current_val = lane[current_index];
+                next_val = lane[next_index];
+
+                while (true)
+                {
+                    if (next_val == 0)
+                    {
+                        if (i == 2)
+                            break;
+                        next_index++;
+                    }
+                    else if ((current_val == next_val) || current_val == 0)
+                    {
+                        lane[current_index] = current_val + next_val;
+                        lane[next_index] = 0;
+                        break;
+
+                    }
+                    else if (current_val != next_val)
+                        break;
+                } // end while
+            } // end loop
+            return lane;
         }
 
         private void spawnTile()
@@ -158,7 +186,8 @@ namespace WindowsFormsApp1
             }
         }
         private void calculateScore()
-        { score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
+        {
+            int score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
                         getTileValue(0, 1) + getTileValue(1, 1) + getTileValue(2, 1) + getTileValue(3, 1) +
                         getTileValue(0, 2) + getTileValue(1, 2) + getTileValue(2, 2) + getTileValue(3, 2) +
                         getTileValue(0, 3) + getTileValue(1, 3) + getTileValue(2, 3) + getTileValue(3, 3);
