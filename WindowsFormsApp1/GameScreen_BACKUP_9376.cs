@@ -27,16 +27,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             hostForm.UserKeyInput += this.gameGrid.UserInput;
-            gameGrid.PropertyChanged += NewGridEvent;
         }
 
-        public void NewGridEvent(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName.Equals("Score"))
-                scoreLabel.Text = gameGrid.CurrentScore.ToString();
-            //else if gameover
-        }
-
+<<<<<<< HEAD
+        
+=======
         public void UserInput(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
@@ -85,6 +80,7 @@ namespace WindowsFormsApp1
         {
             return false;
         }
+>>>>>>> 2c93c484e5ac10562a545fabb305bebf97ad7076
 
     }
 }

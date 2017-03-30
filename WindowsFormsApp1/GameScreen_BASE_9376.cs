@@ -26,15 +26,10 @@ namespace WindowsFormsApp1
         public GameScreen(Form1 hostForm)
         {
             InitializeComponent();
-            hostForm.UserKeyInput += this.gameGrid.UserInput;
-            gameGrid.PropertyChanged += NewGridEvent;
-        }
-
-        public void NewGridEvent(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName.Equals("Score"))
-                scoreLabel.Text = gameGrid.CurrentScore.ToString();
-            //else if gameover
+            hostForm.UserKeyInput += UserInput;
+            spawnTile();
+            spawnTile();
+            gameGrid.Focus();
         }
 
         public void UserInput(object sender, KeyEventArgs e)
@@ -70,7 +65,6 @@ namespace WindowsFormsApp1
         {
             GameTile tile = new GameTile();
             Random rnd = new Random();
-            int[] possibleValues = { 2, 4 };
             do
             {
                 int x = rnd.Next(0, 4);
@@ -78,7 +72,7 @@ namespace WindowsFormsApp1
                 tile = (GameTile)gameGrid.tableLayoutPanel.GetControlFromPosition(x, y);
             } while (tile.Value != 0);
 
-            tile.Value = possibleValues[rnd.Next(possibleValues.Length)];
+            tile.Value = 2;
         }
 
         private bool isGameOver()

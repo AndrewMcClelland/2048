@@ -26,15 +26,10 @@ namespace WindowsFormsApp1
         public GameScreen(Form1 hostForm)
         {
             InitializeComponent();
-            hostForm.UserKeyInput += this.gameGrid.UserInput;
-            gameGrid.PropertyChanged += NewGridEvent;
-        }
-
-        public void NewGridEvent(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName.Equals("Score"))
-                scoreLabel.Text = gameGrid.CurrentScore.ToString();
-            //else if gameover
+            hostForm.UserKeyInput += UserInput;
+            spawnTile();
+            spawnTile();
+            gameGrid.Focus();
         }
 
         public void UserInput(object sender, KeyEventArgs e)
