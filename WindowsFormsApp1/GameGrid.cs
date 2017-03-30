@@ -172,6 +172,56 @@ namespace WindowsFormsApp1
             setTileValue(x, y, tileValue);
         }
 
+        private bool gameOver = false;
+        public bool GameOver
+        {
+            get
+            {
+                return GameOver;
+            }
+            private set
+            {
+                GameOver = value;
+            }
+        }
+        private bool checkForGameOver()
+        {
+            bool isEmptySpace = false;
+            int x, y, currentvalue;
+            for (x = 0; x < 4; x++)
+            {
+                for (y = 0; y < 4; y++)
+                {
+                    if (getTileValue(x, y) != 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            for (x = 0; x < 4; x++) 
+            {
+                for (y = 0; y < 4; y++)
+                {
+                    //Check above
+                    if (y != 0)
+                        if (getTileValue(x, y) == getTileValue(x, y - 1))
+                            return true;
+                    //Check left
+                    if (x != 0)
+                        if (getTileValue(x, y) == getTileValue(x - 1, y))
+                            return true;
+                    //Check down
+                    if (y != 3)
+                        if (getTileValue(x, y) == getTileValue(x, y + 1))
+                            return true;
+                    //Check right
+                    if (x != 3)
+                        if (getTileValue(x, y) == getTileValue(x + 1, y))
+                            return true;
+                }
+            }
+            return false;
+        }
 
         private int currentScore = 0;
         public int CurrentScore
@@ -186,8 +236,12 @@ namespace WindowsFormsApp1
             }
         }
         private void calculateScore()
+<<<<<<< HEAD
         {
             int score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
+=======
+        { int score = getTileValue(0, 0) + getTileValue(1, 0) + getTileValue(2, 0) + getTileValue(3, 0) +
+>>>>>>> 4b47dad61da399ed452eda3bd71bab2014387dea
                         getTileValue(0, 1) + getTileValue(1, 1) + getTileValue(2, 1) + getTileValue(3, 1) +
                         getTileValue(0, 2) + getTileValue(1, 2) + getTileValue(2, 2) + getTileValue(3, 2) +
                         getTileValue(0, 3) + getTileValue(1, 3) + getTileValue(2, 3) + getTileValue(3, 3);
