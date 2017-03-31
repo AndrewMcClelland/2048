@@ -46,10 +46,16 @@ namespace WindowsFormsApp1
 
         public void UserInput(object sender, KeyEventArgs e)
         {
-            shiftTiles(e.KeyCode);
+            if(e.KeyCode == Keys.W || e.KeyCode == Keys.A || e.KeyCode == Keys.S || e.KeyCode == Keys.D)
+                UserMove(e.KeyCode);
+        }
+
+        private void UserMove(Keys keyCode)
+        {
+            shiftTiles(keyCode);
             spawnTile();
             calculateScore();
-            //check for loss
+            checkForGameOver();
         }
 
         private void shiftTiles(Keys keyCode)
