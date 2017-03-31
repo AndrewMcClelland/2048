@@ -152,6 +152,7 @@ namespace WindowsFormsApp1
             return validMove;
         }
 
+        // Logic for moving tiles based on move and combining them
         private int[] mergeLane(int[] lane)
         {
             int current_index, next_index, current_val, next_val;

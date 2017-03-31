@@ -36,10 +36,10 @@
             // 
             this.welcomeScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.welcomeScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("welcomeScreen.BackgroundImage")));
-            this.welcomeScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.welcomeScreen.Location = new System.Drawing.Point(-11, 12);
+            this.welcomeScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.welcomeScreen.Location = new System.Drawing.Point(-11, -12);
             this.welcomeScreen.Name = "welcomeScreen";
-            this.welcomeScreen.Size = new System.Drawing.Size(500, 400);
+            this.welcomeScreen.Size = new System.Drawing.Size(503, 484);
             this.welcomeScreen.TabIndex = 0;
             // 
             // Form1
@@ -55,7 +55,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "2048 Game";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
 
