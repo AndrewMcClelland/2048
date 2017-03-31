@@ -28,12 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.welcomeScreen = new WindowsFormsApp1.WelcomeScreen();
             this.SuspendLayout();
             // 
             // welcomeScreen
             // 
             this.welcomeScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.welcomeScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("welcomeScreen.BackgroundImage")));
+            this.welcomeScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.welcomeScreen.Location = new System.Drawing.Point(-11, 12);
             this.welcomeScreen.Name = "welcomeScreen";
             this.welcomeScreen.Size = new System.Drawing.Size(500, 400);
@@ -46,7 +49,10 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.welcomeScreen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
