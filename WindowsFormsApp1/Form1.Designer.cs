@@ -28,8 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.welcomeScreen = new WindowsFormsApp1.WelcomeScreen();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // welcomeScreen
@@ -57,6 +60,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048 Game";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -64,6 +68,7 @@
         #endregion
 
         private WelcomeScreen welcomeScreen;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

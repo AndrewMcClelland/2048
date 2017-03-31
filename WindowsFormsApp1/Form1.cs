@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace WindowsFormsApp1
 {
 	public partial class Form1 : Form
 	{
-
+        WindowsMediaPlayer player = new WindowsMediaPlayer();
         public event KeyEventHandler UserKeyInput;
 
         private void OnUserKeyInput(KeyEventArgs e)
@@ -27,12 +28,14 @@ namespace WindowsFormsApp1
         public Form1()
 		{
 			InitializeComponent();
+            player.URL = "BackgroundMusic.mp3";
             welcomeScreen.GameStarted += startGame;
             this.Focus();
         }
 
         private void startGame(object sender, EventArgs e)
         {
+            player.controls.play();
             Controls.Clear();
             Controls.Add(new GameScreen(this));
             this.Focus();
@@ -43,7 +46,5 @@ namespace WindowsFormsApp1
         {
             OnUserKeyInput(e);
         }
-
-
     }
 }
