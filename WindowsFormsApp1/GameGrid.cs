@@ -52,28 +52,38 @@ namespace WindowsFormsApp1
 
         private void UserMove(Keys keyCode)
         {
-            shiftTiles(keyCode);
-            spawnTile();
-            calculateScore();
-            checkForGameOver();
+            bool validMove = false;
+            validMove = shiftTiles(keyCode);
+            if (validMove)
+            {
+                spawnTile();
+                calculateScore();
+                checkForGameOver();
+            }
         }
 
-        private void shiftTiles(Keys keyCode)
+        private bool shiftTiles(Keys keyCode)
         {
             int x,y;
-            int[] lane = new int[4];
+            int[] oldLane = new int[4];
+            int[] newLane = new int[4];
+            bool validMove = false;
             if (keyCode == Keys.W)
             {
                 for (x = 0; x < 4; x++) //cols
                 {
                     for (y = 0; y < 4; y++) 
                     {
-                        lane[y] = getTileValue(x, y);
+                        oldLane[y] = getTileValue(x, y);
                     }
-                    lane = mergeLane(lane);
+                    //Save old lane so it can be compared to new lane to check if a change ever even happend
+                    Array.Copy(oldLane, newLane, 4);
+                    newLane = mergeLane(newLane); //new lane is passed in so that aliasing doesnt fuck up oldLane
+                    if (!oldLane.SequenceEqual(newLane))
+                        validMove = true;
                     for (y = 0; y < 4; y++)
                     {
-                        setTileValue(x, y, lane[y]);
+                        setTileValue(x, y, newLane[y]);
                     }
                 }
                 
@@ -84,12 +94,15 @@ namespace WindowsFormsApp1
                 {
                     for (x = 0; x < 4; x++) 
                     {
-                        lane[x] = getTileValue(x, y);
+                        oldLane[x] = getTileValue(x, y);
                     }
-                    lane = mergeLane(lane);
+                    Array.Copy(oldLane, newLane, 4);
+                    newLane = mergeLane(newLane);
+                    if (!oldLane.SequenceEqual(newLane))
+                        validMove = true;
                     for (x = 0; x < 4; x++)
                     {
-                        setTileValue(x, y, lane[x]);
+                        setTileValue(x, y, newLane[x]);
                     }
                 }
                 
@@ -100,14 +113,17 @@ namespace WindowsFormsApp1
                 {
                     for (y = 0; y < 4; y++)
                     {
-                        lane[y] = getTileValue(x, y);
+                        oldLane[y] = getTileValue(x, y);
                     }
-                    Array.Reverse(lane);
-                    lane = mergeLane(lane);
-                    Array.Reverse(lane);
+                    Array.Reverse(oldLane);
+                    Array.Copy(oldLane, newLane, 4);
+                    newLane = mergeLane(newLane);
+                    if (!oldLane.SequenceEqual(newLane))
+                        validMove = true;
+                    Array.Reverse(newLane);
                     for (y = 0; y < 4; y++)
                     {
-                        setTileValue(x, y, lane[y]);
+                        setTileValue(x, y, newLane[y]);
                     }
                 }
                 
@@ -118,18 +134,22 @@ namespace WindowsFormsApp1
                 {
                     for (x = 0; x < 4; x++)
                     {
-                        lane[x] = getTileValue(x, y);
+                        oldLane[x] = getTileValue(x, y);
                     }
-                    Array.Reverse(lane);
-                    lane = mergeLane(lane);
-                    Array.Reverse(lane);
+                    Array.Reverse(oldLane);
+                    Array.Copy(oldLane, newLane, 4);
+                    newLane = mergeLane(newLane);
+                    if (!oldLane.SequenceEqual(newLane))
+                        validMove = true;
+                    Array.Reverse(newLane);
                     for (x = 0; x < 4; x++)
                     {
-                        setTileValue(x, y, lane[x]);
+                        setTileValue(x, y, newLane[x]);
                     }
                 }
                 
             }
+            return validMove;
         }
 
         private int[] mergeLane(int[] lane)
