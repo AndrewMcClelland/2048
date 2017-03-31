@@ -150,8 +150,11 @@ namespace WindowsFormsApp1
                     {
                         lane[current_index] = current_val + next_val;
                         lane[next_index] = 0;
+                        
                         if (next_index == 3)
                             break;
+                        current_index++;
+                        current_val = lane[current_val];
                         next_index++;
                         next_val = lane[next_index];
                     }
