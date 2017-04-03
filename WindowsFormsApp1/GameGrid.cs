@@ -29,7 +29,6 @@ namespace WindowsFormsApp1
             spawnTile();
             spawnTile();
             this.Focus();
-
         }
 
         public int getTileValue(int x, int y)
@@ -54,11 +53,15 @@ namespace WindowsFormsApp1
         {
             bool validMove = false;
             validMove = shiftTiles(keyCode);
+            this.Refresh();
             if (validMove)
             {
                 spawnTile();
+                this.Refresh();
                 calculateScore();
-                checkForGameOver();
+                GameOver = checkForGameOver();
+                if (GameOver)
+                    OnPropertyChanged("GameOver");
             }
         }
 
@@ -219,11 +222,11 @@ namespace WindowsFormsApp1
         {
             get
             {
-                return GameOver;
+                return gameOver;
             }
             private set
             {
-                GameOver = value;
+                gameOver = value;
             }
         }
         private bool checkForGameOver()
@@ -234,9 +237,10 @@ namespace WindowsFormsApp1
             {
                 for (y = 0; y < 4; y++)
                 {
-                    if (getTileValue(x, y) != 0)
+                    int value = getTileValue(x, y);
+                    if (value == 0)
                     {
-                        return true;
+                        return false;
                     }
                 }
             }
@@ -247,22 +251,22 @@ namespace WindowsFormsApp1
                     //Check above
                     if (y != 0)
                         if (getTileValue(x, y) == getTileValue(x, y - 1))
-                            return true;
+                            return false;
                     //Check left
                     if (x != 0)
                         if (getTileValue(x, y) == getTileValue(x - 1, y))
-                            return true;
+                            return false;
                     //Check down
                     if (y != 3)
                         if (getTileValue(x, y) == getTileValue(x, y + 1))
-                            return true;
+                            return false;
                     //Check right
                     if (x != 3)
                         if (getTileValue(x, y) == getTileValue(x + 1, y))
-                            return true;
+                            return false;
                 }
             }
-            return false;
+            return true;
         }
 
         private int currentScore = 0;

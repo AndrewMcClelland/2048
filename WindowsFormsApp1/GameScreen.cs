@@ -23,7 +23,19 @@ namespace WindowsFormsApp1
             }
         }
 
-        public GameScreen(Form1 hostForm)
+        public int Score
+        {
+            get
+            {
+                return Convert.ToInt16(scoreLabel.Text);
+            }
+            private set
+            {
+                scoreLabel.Text = value.ToString();
+            }
+        }
+
+        public GameScreen(MainForm hostForm)
         {
             InitializeComponent();
             hostForm.UserKeyInput += this.gameGrid.UserInput;
@@ -33,10 +45,9 @@ namespace WindowsFormsApp1
         public void NewGridEvent(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName.Equals("Score"))
-                scoreLabel.Text = gameGrid.CurrentScore.ToString();
-            else if (e.PropertyName.Equals("gameOver"))
-                //Game over
-                ;
+                Score = gameGrid.CurrentScore;
+            else if (e.PropertyName.Equals("GameOver"))
+                OnGameOver(new EventArgs());
         }
 
         public void UserInput(object sender, KeyEventArgs e)
@@ -44,16 +55,10 @@ namespace WindowsFormsApp1
             if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 shiftTiles(e.KeyCode);
-
-
-
                 spawnTile();
-
                 if (isGameOver())
                     OnGameOver(new EventArgs());
-
-            }
-            
+            }     
         }
 
         private void shiftTiles(Keys keyCode)
