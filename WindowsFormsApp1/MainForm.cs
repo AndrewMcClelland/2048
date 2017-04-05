@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         public MainForm()
 		{
 			InitializeComponent();
-            player.URL = "BackgroundMusic.mp3";
+            player.URL = "BackroundMusic2.mp3";
             welcomeScreen.GameStarted += startGame;
             this.Focus();
         }
